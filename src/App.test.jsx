@@ -2,8 +2,16 @@ import { expect, test } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders link to the AI agency prototype', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeDefined();
+
+  const heading = screen.getByRole('heading', {
+    name: /ai agency wordpress prototype ready/i,
+  });
+  expect(heading).toBeDefined();
+
+  const link = screen.getByRole('link', {
+    name: /ai-agency-prototype\/index.html/i,
+  });
+  expect(link.getAttribute('href')).toBe('/ai-agency-prototype/index.html');
 });
